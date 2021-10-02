@@ -64,7 +64,7 @@ def make_video(grid_size = [4, 4], duration_sec = 60.0, mp4_fps = 20, random_see
         frame_idx = int(np.clip(np.round(t * mp4_fps), 0, num_frames - 1))
         latents = all_latents[frame_idx]
         fmt = dict(func=tflib.convert_images_to_uint8, nchw_to_nhwc=True)
-        images = Gs.run(latents, None, truncation_psi=1.0,
+        images = Gs.run(latents, None, truncation_psi=0.4,
                               randomize_noise=False, output_transform=fmt)
 
         grid = create_image_grid(images, grid_size)
